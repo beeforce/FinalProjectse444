@@ -8,6 +8,7 @@ App.controller('CharacterController', [
 
 			self.character = { name : null, wins: '', lose: '', draw: '', state: ''};
 			self.characters = [];
+			self.deleteName = {name:''};
 			self.nameBattle = {name:''};
 			self.output = { name:'', wins:'', lose:'', draw:'', state:'',result:''};
 			self.state = {state:'',name:''};
@@ -53,6 +54,17 @@ App.controller('CharacterController', [
 				RESTService.BattleAI(self.nameBattle).then(function(response) {
 					self.output = response;
 					self.fetchAllCharacters();
+					
+				}, function(errResponse) {
+					console.log("errResponse from controller:" + errResponse);
+					console.error('Error while fetching Characters');
+				});
+				self.fetchAllCharacters();
+			};
+			
+			self.Deleteplayer = function(nameDelete) {
+				self.deleteName.name = nameDelete;
+				RESTService.Deleteplayer(self.deleteName.name).then(function(response) {
 					
 				}, function(errResponse) {
 					console.log("errResponse from controller:" + errResponse);

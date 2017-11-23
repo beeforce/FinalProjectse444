@@ -68,7 +68,11 @@ public class PlayerController {
 		return battleservice.BattleAI(p);
 
 	}
-	
+	@RequestMapping(method=RequestMethod.DELETE, value="/Deleteplayers/{nameparam}")
+	public boolean DeleteCharacter(@PathVariable String nameparam){
+		
+		return createplayerservice.DeletePlayer(nameparam); 
+	}
 	@RequestMapping("/HighScore")
 	public String gethighscore(){
 		return battleservice.HighScore();

@@ -14,11 +14,16 @@
 </head>
 <body ng-controller="CharacterController as ctrl" class="container">
 	<h1 class="text-center">Rock Paper Scissors Battle</h1><br/>
-	<form method="post">
+	<table>
+	<th width="40%"><form method="post">
 		Player name: <input type="text" ng-model="ctrl.character.name">
 		<button type="submit" class="btn btn-info"
 			ng-click="ctrl.addPlayer()">Add</button>
 	</form>
+	</th>
+	<th><img src="https://pa1.narvii.com/5809/2c1d42e9a2372bbabdc550733f42cd78b08af7a9_hq.gif" alt="This will display an animated GIF" style="width:90%" /></th>
+	<th><img src="https://media.giphy.com/media/RXQZZOSIxj9i8/giphy.gif" alt="This will display an animated GIF" style="width:85%" /></th>
+	</table>
 	<div class="tablecontainer">
 		<table class="table table-hover">
 			<thead>
@@ -36,7 +41,7 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="c in ctrl.characters">
-					<td><span ng-bind="c.name"></span></td>
+					<td><span ng-bind="c.name"></span>&nbsp;<button  class="btn btn-danger" ng-click="ctrl.Deleteplayer(c.name)">delete</button></td>
 					<td><span ng-bind="c.wins"></span></td>
 					<td><span ng-bind="c.lose"></span></td>
 					<td><span ng-bind="c.draw"></span></td>

@@ -69,6 +69,23 @@ App.factory('RESTService', ['$http', '$q', function($http, $q){
 		);
 	},
 	
+	Deleteplayer : function(deleteplayers) {
+		console.log(deleteplayers);
+		return $http({
+			method : 'DELETE',
+			url : 'http://localhost:8080/Deleteplayers/'+deleteplayers,
+			headers : {'Content-Type' : 'application/json'}
+		}).then(function (response) {
+			console.log("response:"+response);
+			return response.data;
+		},
+			function(errResponse) {
+			console.log("error:"+error);
+			displayError(errResponse);
+			}
+		);
+	},
+	
   };
 }]);
 

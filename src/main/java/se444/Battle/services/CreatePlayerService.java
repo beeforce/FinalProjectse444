@@ -43,6 +43,16 @@ public class CreatePlayerService {
 		return "Can not find a players";
 	}
 	
+	public boolean DeletePlayer(String name) {
+		for(Player a:this.playerList) {
+			if(a.getName().equals(name)){
+				this.playerList.remove(a);
+				return true;
+			}
+			}
+		return false;
+	}
+	
 	
 	public ArrayList<Player> getEntirePlayer() {
 		return this.playerList;
