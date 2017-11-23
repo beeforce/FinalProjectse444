@@ -65,7 +65,7 @@ App.controller('CharacterController', [
 			self.Deleteplayer = function(nameDelete) {
 				self.deleteName.name = nameDelete;
 				RESTService.Deleteplayer(self.deleteName.name).then(function(response) {
-					
+					self.fetchAllCharacters();
 				}, function(errResponse) {
 					console.log("errResponse from controller:" + errResponse);
 					console.error('Error while fetching Characters');
