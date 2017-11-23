@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="AdventureGame">
+<head>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+<script type="text/javascript" src="static/js/app.js"></script>
+<script type="text/javascript" src="static/js/character_service.js"></script>
+<script type="text/javascript" src="static/js/character_controller.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous">
+
+</head>
+<body ng-controller="CharacterController as ctrl" class="container">
+	<h1 class="text-center">Rock Paper Scissors Battle</h1><br/>
+	<form method="post">
+		Player name: <input type="text" ng-model="ctrl.character.name">
+		<button type="submit" class="btn btn-info"
+			ng-click="ctrl.addPlayer()">Add</button>
+	</form>
+	<div class="tablecontainer">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Win</th>
+					<th>Lose</th>
+					<th>Draw</th>
+					<th>State</th>
+					<th>Set state</th>
+					<th>Your state</th>
+					<th>Battle</th>
+	
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="c in ctrl.characters">
+					<td><span ng-bind="c.name"></span></td>
+					<td><span ng-bind="c.wins"></span></td>
+					<td><span ng-bind="c.lose"></span></td>
+					<td><span ng-bind="c.draw"></span></td>
+					<td><span ng-bind="c.state"></span></td>
+					<td>
+					<button type="submit" class="btn-primary" ng-click="ctrl.addState(1,c.name)">Scissors</button>
+					<button type="submit" class="btn-primary" ng-click="ctrl.addState(2,c.name)">Rock</button>
+					<button type="submit" class="btn-primary" ng-click="ctrl.addState(3,c.name)">Paper</button>
+					</td>
+					<td><span ng-if="1 == c.state">
+    				Scissors
+					</span>
+					<span ng-if="2 == c.state">
+    				Rock
+					</span>
+					<span ng-if="3 == c.state">
+    				Paper
+					</span>
+					<span ng-if="0 == c.state">
+   					No state
+					</span></td>
+					<td><button type="submit" class="btn btn-danger" ng-click="ctrl.BattleAI(c.name)">Battle
+							AI</button></td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="footer">
+  <div class="row"> 
+	<h3>Result:&nbsp;</h3>
+	<h3 ng-bind="ctrl.output.result"></h3></div></div>
+</body>
+</html>
