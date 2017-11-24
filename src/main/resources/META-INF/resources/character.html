@@ -13,7 +13,9 @@
 
 </head>
 <body ng-controller="CharacterController as ctrl" class="container">
+<div class="jumbotron">
 	<h1 class="text-center">Rock Paper Scissors Battle</h1><br/>
+	</div>
 	<table>
 	<th width="40%"><form method="post">
 		Player name: <input type="text" ng-model="ctrl.character.name">
@@ -25,9 +27,9 @@
 	<th><img src="https://media.giphy.com/media/RXQZZOSIxj9i8/giphy.gif" alt="This will display an animated GIF" style="width:85%" /></th>
 	</table>
 	<div class="tablecontainer">
-		<table class="table table-hover">
-			<thead>
-				<tr>
+		<table class="table table-striped table-hover table-bordered">
+			<thead class="thead-dark">
+				<tr class="danger">
 					<th>Name</th>
 					<th>Win</th>
 					<th>Lose</th>
@@ -38,18 +40,19 @@
 					<th></th>
 	
 				</tr>
+				</div>
 			</thead>
 			<tbody>
-				<tr ng-repeat="c in ctrl.characters">
+				<tr ng-repeat="c in ctrl.characters" class="success">
 					<td><span ng-bind="c.name"></span>&nbsp;<button  class="btn btn-danger" ng-click="ctrl.Deleteplayer(c.name)">delete</button></td>
 					<td><span ng-bind="c.wins"></span></td>
 					<td><span ng-bind="c.lose"></span></td>
 					<td><span ng-bind="c.draw"></span></td>
 					<td><span ng-bind="c.state"></span></td>
 					<td>
-					<button type="submit" class="btn-primary" ng-click="ctrl.addState(1,c.name)">Scissors</button>
-					<button type="submit" class="btn-primary" ng-click="ctrl.addState(2,c.name)">Rock</button>
-					<button type="submit" class="btn-primary" ng-click="ctrl.addState(3,c.name)">Paper</button>
+					<button type="submit" class="btn btn-outline-primary" ng-click="ctrl.addState(1,c.name)">Scissors</button>
+					<button type="submit" class="btn btn-outline-primary" ng-click="ctrl.addState(2,c.name)">Rock</button>
+					<button type="submit" class="btn btn-outline-primary" ng-click="ctrl.addState(3,c.name)">Paper</button>
 					</td>
 					<td><span ng-if="1 == c.state">
     				Scissors
@@ -63,7 +66,7 @@
 					<span ng-if="0 == c.state">
    					No state
 					</span></td>
-					<td><button type="submit" class="btn btn-danger" ng-click="ctrl.BattleAI(c.name)">Battle
+					<td><button type="submit" class="btn btn-warning" ng-click="ctrl.BattleAI(c.name)">Battle
 							AI</button></td>
 
 				</tr>
